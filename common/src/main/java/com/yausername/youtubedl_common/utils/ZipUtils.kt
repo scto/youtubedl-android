@@ -1,15 +1,15 @@
 package com.yausername.youtubedl_common.utils
 
 import android.system.Os
-import org.apache.commons.compress.archivers.zip.ZipArchiveEntry
-import org.apache.commons.compress.archivers.zip.ZipArchiveInputStream
-import org.apache.commons.compress.archivers.zip.ZipFile
-import org.apache.commons.io.IOUtils
 import java.io.BufferedInputStream
 import java.io.File
 import java.io.FileOutputStream
 import java.io.InputStream
 import java.nio.charset.StandardCharsets
+import org.apache.commons.compress.archivers.zip.ZipArchiveEntry
+import org.apache.commons.compress.archivers.zip.ZipArchiveInputStream
+import org.apache.commons.compress.archivers.zip.ZipFile
+import org.apache.commons.io.IOUtils
 
 object ZipUtils {
     fun unzip(sourceFile: File?, targetDirectory: File) {
@@ -19,8 +19,14 @@ object ZipUtils {
                 val entry = entries.nextElement()
                 val entryDestination = File(targetDirectory, entry.name)
                 // prevent zipSlip
-                if (!entryDestination.canonicalPath.startsWith(targetDirectory.canonicalPath + File.separator)) {
-                    throw IllegalAccessException("Entry is outside of the target dir: " + entry.name)
+                if (
+                    !entryDestination.canonicalPath.startsWith(
+                        targetDirectory.canonicalPath + File.separator
+                    )
+                ) {
+                    throw IllegalAccessException(
+                        "Entry is outside of the target dir: " + entry.name
+                    )
                 }
                 if (entry.isDirectory) {
                     entryDestination.mkdirs()
@@ -32,12 +38,7 @@ object ZipUtils {
                 } else {
                     entryDestination.parentFile?.mkdirs()
                     zipFile.getInputStream(entry).use { `in` ->
-                        FileOutputStream(entryDestination).use { out ->
-                            IOUtils.copy(
-                                `in`,
-                                out
-                            )
-                        }
+                        FileOutputStream(entryDestination).use { out -> IOUtils.copy(`in`, out) }
                     }
                 }
             }
@@ -50,8 +51,14 @@ object ZipUtils {
             while (zis.nextZipEntry.also { entry = it } != null) {
                 val entryDestination = File(targetDirectory, entry!!.name)
                 // prevent zipSlip
-                if (!entryDestination.canonicalPath.startsWith(targetDirectory.canonicalPath + File.separator)) {
-                    throw IllegalAccessException("Entry is outside of the target dir: " + entry!!.name)
+                if (
+                    !entryDestination.canonicalPath.startsWith(
+                        targetDirectory.canonicalPath + File.separator
+                    )
+                ) {
+                    throw IllegalAccessException(
+                        "Entry is outside of the target dir: " + entry!!.name
+                    )
                 }
                 if (entry!!.isDirectory) {
                     entryDestination.mkdirs()

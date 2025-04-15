@@ -1,6 +1,5 @@
 package com.yausername.youtubedl_android
 
-import com.android.build.api.dsl.LibraryExtension
 import org.gradle.api.Project
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPom
@@ -8,7 +7,6 @@ import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.create
 import org.gradle.kotlin.dsl.get
-
 
 internal fun Project.configurePublish(id: String) {
 
@@ -19,24 +17,17 @@ internal fun Project.configurePublish(id: String) {
                 artifactId = id
                 version = project.version.toString()
 
-                afterEvaluate {
-                    from(components["release"])
-                }
+                afterEvaluate { from(components["release"]) }
 
-                pom {
-                    commonPomConfiguration()
-                }
+                pom { commonPomConfiguration() }
             }
         }
 
         repositories {
-            maven {
-                url = uri(rootProject.buildDir.resolve("staging-deploy").absolutePath)
-            }
+            maven { url = uri(rootProject.buildDir.resolve("staging-deploy").absolutePath) }
         }
     }
 }
-
 
 internal fun MavenPom.commonPomConfiguration() {
     name.set("youtubedl-android")

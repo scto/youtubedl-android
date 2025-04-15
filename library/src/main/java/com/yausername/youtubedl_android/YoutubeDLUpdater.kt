@@ -8,10 +8,10 @@ import com.yausername.youtubedl_android.YoutubeDL.UpdateStatus
 import com.yausername.youtubedl_android.YoutubeDL.getInstance
 import com.yausername.youtubedl_common.SharedPrefsHelper
 import com.yausername.youtubedl_common.SharedPrefsHelper.update
-import org.apache.commons.io.FileUtils
 import java.io.File
 import java.io.IOException
 import java.net.URL
+import org.apache.commons.io.FileUtils
 
 internal object YoutubeDLUpdater {
     private const val youtubeDLStableChannelUrl =
@@ -27,20 +27,18 @@ internal object YoutubeDLUpdater {
     @Throws(IOException::class, YoutubeDLException::class)
     internal fun update(
         appContext: Context?,
-        youtubeDLChannel: UpdateChannel = UpdateChannel.STABLE
+        youtubeDLChannel: UpdateChannel = UpdateChannel.STABLE,
     ): UpdateStatus {
-        val json = checkForUpdate(appContext!!, youtubeDLChannel)
-            ?: return UpdateStatus.ALREADY_UP_TO_DATE
+        val json =
+            checkForUpdate(appContext!!, youtubeDLChannel) ?: return UpdateStatus.ALREADY_UP_TO_DATE
         val downloadUrl = getDownloadUrl(json)
         val file = download(appContext, downloadUrl)
-        val ytdlpDir = getYoutubeDLDir(
-            appContext
-        )
+        val ytdlpDir = getYoutubeDLDir(appContext)
         val binary = File(ytdlpDir, dlpBinaryName)
         try {
             /* purge older version */
             if (ytdlpDir.exists()) FileUtils.deleteDirectory(ytdlpDir)
-            /* install newer version */ytdlpDir.mkdirs()
+            /* install newer version */ ytdlpDir.mkdirs()
             FileUtils.copyFile(file, binary)
         } catch (e: Exception) {
             /* if something went wrong restore default version */

@@ -11,7 +11,7 @@ import java.util.regex.Pattern
 internal class StreamProcessExtractor(
     private val buffer: StringBuffer,
     private val stream: InputStream,
-    private val callback: ((Float, Long, String) -> Unit)?
+    private val callback: ((Float, Long, String) -> Unit)?,
 ) : Thread() {
     private val p = Pattern.compile("\\[download\\]\\s+(\\d+\\.\\d)% .* ETA (\\d+):(\\d+)")
     private val pAria2c =
@@ -49,8 +49,8 @@ internal class StreamProcessExtractor(
 
     private fun getProgress(line: String): Float {
         val matcher = p.matcher(line)
-        if (matcher.find()) return matcher.group(GROUP_PERCENT).toFloat()
-            .also { progress = it } else {
+        if (matcher.find()) return matcher.group(GROUP_PERCENT).toFloat().also { progress = it }
+        else {
             val mAria2c = pAria2c.matcher(line)
             if (mAria2c.find()) return mAria2c.group(1).toFloat().also { progress = it }
         }
@@ -59,15 +59,16 @@ internal class StreamProcessExtractor(
 
     private fun getEta(line: String): Long {
         val matcher = p.matcher(line)
-        if (matcher.find()) return convertToSeconds(
-            matcher.group(GROUP_MINUTES),
-            matcher.group(GROUP_SECONDS)
-        ).also { eta = it.toLong() }.toLong() else {
+        if (matcher.find())
+            return convertToSeconds(matcher.group(GROUP_MINUTES), matcher.group(GROUP_SECONDS))
+                .also { eta = it.toLong() }
+                .toLong()
+        else {
             val mAria2c = pAria2c.matcher(line)
-            if (mAria2c.find()) return convertToSeconds(
-                mAria2c.group(3),
-                mAria2c.group(5)
-            ).also { eta = it.toLong() }.toLong()
+            if (mAria2c.find())
+                return convertToSeconds(mAria2c.group(3), mAria2c.group(5))
+                    .also { eta = it.toLong() }
+                    .toLong()
         }
         return eta
     }

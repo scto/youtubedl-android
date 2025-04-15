@@ -4,8 +4,8 @@ import android.content.Context
 import com.yausername.youtubedl_android.YoutubeDLException
 import com.yausername.youtubedl_common.SharedPrefsHelper
 import com.yausername.youtubedl_common.utils.ZipUtils
-import org.apache.commons.io.FileUtils
 import java.io.File
+import org.apache.commons.io.FileUtils
 
 object Aria2c {
     private var initialized = false
@@ -57,6 +57,5 @@ object Aria2c {
     private const val aria2cLibName = "libaria2c.zip.so"
     private const val aria2cLibVersion = "aria2cLibVersion"
 
-    @JvmStatic
-    fun getInstance() = this
+    @JvmStatic fun getInstance() = this
 }

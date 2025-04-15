@@ -10,12 +10,12 @@ open class PublishConfigurationExtension {
     var artifactId: String = ""
 }
 
-
 open class PublishPlugin : Plugin<Project> {
 
     override fun apply(project: Project) {
         project.extensions.create<PublishConfigurationExtension>(
-            "configurePublishing", PublishConfigurationExtension::class.java
+            "configurePublishing",
+            PublishConfigurationExtension::class.java,
         )
         project.afterEvaluate {
             project.extensions.getByType<PublishConfigurationExtension>().run {
@@ -29,6 +29,3 @@ open class PublishPlugin : Plugin<Project> {
         }
     }
 }
-
-
-

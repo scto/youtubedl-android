@@ -5,5 +5,5 @@ class YoutubeDLResponse(
     val exitCode: Int,
     val elapsedTime: Long,
     val out: String,
-    val err: String
+    val err: String,
 )

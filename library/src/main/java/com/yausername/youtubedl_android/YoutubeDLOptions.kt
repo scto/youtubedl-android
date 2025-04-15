@@ -12,6 +12,7 @@ import kotlin.collections.set
 
 class YoutubeDLOptions {
     private val options: MutableMap<String, MutableList<String>> = LinkedHashMap()
+
     fun addOption(option: String, argument: String): YoutubeDLOptions {
         if (!options.containsKey(option)) {
             val arguments: MutableList<String> = ArrayList()

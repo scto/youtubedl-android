@@ -5,8 +5,8 @@ import com.yausername.youtubedl_android.YoutubeDLException
 import com.yausername.youtubedl_common.SharedPrefsHelper
 import com.yausername.youtubedl_common.SharedPrefsHelper.update
 import com.yausername.youtubedl_common.utils.ZipUtils.unzip
-import org.apache.commons.io.FileUtils
 import java.io.File
+import org.apache.commons.io.FileUtils
 
 object FFmpeg {
     private var initialized = false
@@ -49,12 +49,11 @@ object FFmpeg {
         update(appContext, ffmpegLibVersion, version)
     }
 
-    @JvmStatic
-    fun getInstance() = this
+    @JvmStatic fun getInstance() = this
+
     private const val baseName = "youtubedl-android"
     private const val packagesRoot = "packages"
     private const val ffmegDirName = "ffmpeg"
     private const val ffmpegLibName = "libffmpeg.zip.so"
     private const val ffmpegLibVersion = "ffmpegLibVersion"
-
 }

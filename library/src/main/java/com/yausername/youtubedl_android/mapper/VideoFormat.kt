@@ -10,11 +10,9 @@ class VideoFormat {
     val abr = 0
     val format: String? = null
 
-    @JsonProperty("format_id")
-    val formatId: String? = null
+    @JsonProperty("format_id") val formatId: String? = null
 
-    @JsonProperty("format_note")
-    val formatNote: String? = null
+    @JsonProperty("format_note") val formatNote: String? = null
     val ext: String? = null
     val preference = 0
     val vcodec: String? = null
@@ -22,17 +20,13 @@ class VideoFormat {
     val width = 0
     val height = 0
 
-    @JsonProperty("filesize")
-    val fileSize: Long = 0
+    @JsonProperty("filesize") val fileSize: Long = 0
 
-    @JsonProperty("filesize_approx")
-    val fileSizeApproximate: Long = 0
+    @JsonProperty("filesize_approx") val fileSizeApproximate: Long = 0
     val fps = 0
     val url: String? = null
 
-    @JsonProperty("manifest_url")
-    val manifestUrl: String? = null
+    @JsonProperty("manifest_url") val manifestUrl: String? = null
 
-    @JsonProperty("http_headers")
-    val httpHeaders: Map<String, String>? = null
+    @JsonProperty("http_headers") val httpHeaders: Map<String, String>? = null
 }
