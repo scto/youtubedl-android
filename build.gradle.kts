@@ -7,12 +7,17 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+  id("com.android.application") apply false
+  id("com.android.library") apply false
+  id("org.jetbrains.kotlin.android") apply false
+  /*
   alias(libs.plugins.android.application) apply false
   alias(libs.plugins.android.library) apply false
   alias(libs.plugins.kotlin) apply false
   alias(libs.plugins.kotlin.compose) apply false
   alias(libs.plugins.kotlin.serialization) apply false
   alias(libs.plugins.aboutlibraries) apply false
+  */
 }
 
 
@@ -39,6 +44,7 @@ buildscript {
 }
 */
 
+/*
 val versionMajor = 0
 val versionMinor = 17
 val versionPatch = 3
@@ -60,6 +66,7 @@ extra.apply {
     //set("commonsCompressVer", "1.12") // supports java 1.6 //1.27.1
     set("coreKtxVer", "1.8.0")
 }
+*/
 
 /*
 allprojects {
