@@ -40,8 +40,10 @@ extra.apply {
     set("androidJunitVer", "1.1.3")
     set("espressoVer", "3.4.0")
     set("jacksonVer", "2.11.1")
-    set("commonsIoVer", "2.5") // supports java 1.6
-    set("commonsCompressVer", "1.12") // supports java 1.6
+    set("commonsIoVer", "2.19.0") // supports java 17 //2.19.0
+    set("commonsCompressVer", "1.27.1") // supports java 17 //1.27.1
+    //set("commonsIoVer", "2.5") // supports java 1.6 //2.19.0
+    //set("commonsCompressVer", "1.12") // supports java 1.6 //1.27.1
     set("coreKtxVer", "1.8.0")
 }
 
