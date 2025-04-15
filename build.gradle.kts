@@ -1,5 +1,8 @@
 import com.android.build.api.dsl.Publishing
-import com.android.build.gradle.internal.cxx.os.exe
+//import com.android.build.gradle.internal.cxx.os.exe
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
@@ -47,6 +50,17 @@ allprojects {
     version = versionName
 }
 
+subprojects {
+    tasks.withType<KotlinCompile>().configureEach {
+        compilerOptions {
+            apiVersion = KotlinVersion.KOTLIN_2_0
+            languageVersion = KotlinVersion.KOTLIN_2_0
+            jvmTarget = JvmTarget.JVM_17
+            freeCompilerArgs.add("-Xjvm-default=all")
+        }
+    }
+}
+
 tasks.register<Delete>("clean") {
     delete(rootProject.layout.buildDirectory)
 }
@@ -71,7 +85,4 @@ tasks.register("packagePublishedArtifacts") {
             commandLine(zipCommands)
         }
     }
-
 }
-
-
