@@ -6,7 +6,18 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
+plugins {
+  alias(libs.plugins.android.application) apply false
+  alias(libs.plugins.android.library) apply false
+  alias(libs.plugins.kotlin) apply false
+  alias(libs.plugins.kotlin.compose) apply false
+  alias(libs.plugins.kotlin.serialization) apply false
+  alias(libs.plugins.aboutlibraries) apply false
+}
+
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+/*
 buildscript {
     //val kotlin_version by extra("1.7.22")
     repositories {
@@ -26,6 +37,7 @@ buildscript {
         // in the individual module build.gradle files
     }
 }
+*/
 
 val versionMajor = 0
 val versionMinor = 17
@@ -49,10 +61,12 @@ extra.apply {
     set("coreKtxVer", "1.8.0")
 }
 
+/*
 allprojects {
     group = "com.github.yausername"
     version = versionName
 }
+*/
 
 fun Project.configureBaseExtension() {
   extensions.findByType(BaseExtension::class)?.run {
@@ -87,6 +101,7 @@ tasks.register<Delete>("clean") {
     delete(rootProject.layout.buildDirectory)
 }
 
+/*
 tasks.register("packagePublishedArtifacts") {
     val librariesToPublish = listOf("common", "library", "aria2c", "ffmpeg")
     librariesToPublish.forEach {
@@ -108,3 +123,4 @@ tasks.register("packagePublishedArtifacts") {
         }
     }
 }
+*/
