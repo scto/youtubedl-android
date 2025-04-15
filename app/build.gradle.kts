@@ -45,6 +45,18 @@ android {
         isUniversalApk = true
     }
 
+    packaging {
+        resources.excludes.addAll(
+            arrayOf(
+                "META-INF/README.md",
+                "META-INF/CHANGES",
+                "bundle.properties",
+                "plugin.properties"
+            )
+        )
+
+        jniLibs { useLegacyPackaging = true }
+    }
 }
 
 dependencies {
