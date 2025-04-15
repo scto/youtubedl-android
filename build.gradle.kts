@@ -1,5 +1,7 @@
 import com.android.build.api.dsl.Publishing
 //import com.android.build.gradle.internal.cxx.os.exe
+
+import com.android.build.gradle.BaseExtension
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -50,6 +52,24 @@ extra.apply {
 allprojects {
     group = "com.github.yausername"
     version = versionName
+}
+
+fun Project.configureBaseExtension() {
+  extensions.findByType(BaseExtension::class)?.run {
+    compileSdkVersion(35)
+
+    defaultConfig {
+      minSdk = 26
+      targetSdk = 28
+      versionCode = 201
+      versionName = "2.0.1"
+    }
+
+    compileOptions {
+      sourceCompatibility = JavaVersion.VERSION_17
+      targetCompatibility = JavaVersion.VERSION_17
+    }
+  }
 }
 
 subprojects {
