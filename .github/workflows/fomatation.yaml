@@ -8,7 +8,8 @@ on:
     paths-ignore:
       - '**/*.md'
   schedule:
-    - cron: '*/30 * * * *' # every 30 minutes
+    - cron" '00 20 * * *'
+    #- cron: '*/30 * * * *' # every 30 minutes
   workflow_dispatch:
 
 jobs:
