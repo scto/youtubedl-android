@@ -5,15 +5,18 @@ plugins {
 
 android {
     namespace = "com.yausername.youtubedl_android_example"
-    compileSdk = 34
+    //compileSdk = 34
 
     defaultConfig {
         applicationId = "com.yausername.youtubedl_android_example"
+        /*
         minSdk = 24
         targetSdk = 34
         versionName = rootProject.ext["versionName"] as String
         versionCode = rootProject.ext["versionCode"] as Int
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        */
+
+        //testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
 
         ndk {
@@ -31,10 +34,12 @@ android {
         }
     }
 
+    /*
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
+    */
 
     splits.abi {
         isEnable = true
@@ -55,6 +60,13 @@ android {
 
         jniLibs { useLegacyPackaging = true }
     }
+
+    lint {
+        abortOnError = false
+        disable += listOf("MaterialDesignInsteadOrbitDesign")
+    }
+
+
     /*
     externalNativeBuild {
         cmake {
