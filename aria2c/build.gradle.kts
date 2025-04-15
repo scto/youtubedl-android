@@ -39,6 +39,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.common.commons.io)
     implementation(libs.androidx.appcompat)
+
     compileOnly(project(":library"))
     /*
     testImplementation("junit:junit:${rootProject.extra["junitVer"]}")

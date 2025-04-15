@@ -39,9 +39,9 @@ dependencies {
     implementation(project(":common"))
     implementation(libs.androidx.core.ktx)
     compileOnly(project(":library"))
-
     implementation(libs.androidx.appcompat)
     implementation(libs.common.commons.io)
+
     /*
     testImplementation("junit:junit:${rootProject.extra["junitVer"]}")
     androidTestImplementation("androidx.test.ext:junit:${rootProject.extra["androidJunitVer"]}")
