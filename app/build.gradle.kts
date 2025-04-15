@@ -88,7 +88,7 @@ dependencies {
     implementation("io.reactivex.rxjava2:rxandroid:2.1.0")
     implementation("com.devbrackets.android:exomedia:5.1.0")
 
-    testImplementation("junit:junit:${rootProject.extra["junitVer"]}")
+    //testImplementation("junit:junit:${rootProject.extra["junitVer"]}")
     androidTestImplementation("androidx.test.ext:junit:${rootProject.extra["androidJunitVer"]}")
     androidTestImplementation("androidx.test.espresso:espresso-core:${rootProject.extra["espressoVer"]}")
 }
