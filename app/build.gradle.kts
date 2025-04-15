@@ -1,6 +1,8 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin)
+    //id("com.android.application")
+    //id("org.jetbrains.kotlin.android")
 }
 
 android {
@@ -82,13 +84,13 @@ dependencies {
     implementation(project(":library"))
     implementation(project(":ffmpeg"))
     implementation(project(":aria2c"))
-    implementation("androidx.appcompat:appcompat:${rootProject.extra["appCompatVer"]}")
-    implementation("androidx.constraintlayout:constraintlayout:1.1.3")
-    implementation("androidx.core:core-ktx:${rootProject.extra["coreKtxVer"]}")
-    implementation("io.reactivex.rxjava2:rxandroid:2.1.0")
-    implementation("com.devbrackets.android:exomedia:5.1.0")
+    implementation("libs.androidx.appcompat")
+    implementation("libs.androidx.constraintlayout")
+    implementation("libs.androidx.core.ktx")
+    implementation("libs.common.rxjava")
+    implementation("libs.common.exomedia")
 
     //testImplementation("junit:junit:${rootProject.extra["junitVer"]}")
-    androidTestImplementation("androidx.test.ext:junit:${rootProject.extra["androidJunitVer"]}")
-    androidTestImplementation("androidx.test.espresso:espresso-core:${rootProject.extra["espressoVer"]}")
+    //androidTestImplementation("androidx.test.ext:junit:${rootProject.extra["androidJunitVer"]}")
+    //androidTestImplementation("androidx.test.espresso:espresso-core:${rootProject.extra["espressoVer"]}")
 }
