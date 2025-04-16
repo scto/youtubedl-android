@@ -30,18 +30,16 @@ android {
         release {
             isMinifyEnabled = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android.txt"),
+              getDefaultProguardFile("proguard-android.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField( "boolean", "DEBUG", "false")
+        }
+        debug {
+              isMinifyEnabled = false
+              buildConfigField( "boolean", "DEBUG", "true")
         }
     }
-
-    /*
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    */
 
     splits.abi {
         isEnable = true
@@ -67,16 +65,6 @@ android {
         abortOnError = false
         disable += listOf("MaterialDesignInsteadOrbitDesign")
     }
-
-
-    /*
-    externalNativeBuild {
-        cmake {
-            path = file("src/main/cpp/CMakeLists.txt")
-            version = "3.22.1"
-        }
-    }
-    */
 }
 
 dependencies {

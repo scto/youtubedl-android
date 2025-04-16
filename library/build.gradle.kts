@@ -22,6 +22,7 @@ android {
                 getDefaultProguardFile("proguard-android.txt"),
                 "proguard-rules.pro"
             )
+            buildConfigField( "boolean", "DEBUG", "false")
         }
     }
     buildFeatures {
